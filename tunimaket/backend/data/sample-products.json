@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Tunisian Olive Oil 1L",
+    "description": "Premium extra virgin olive oil from local farms.",
+    "price": 15,
+    "image": "https://imgs.search.brave.com/9wCUixxwF-yY8kpZzz66af0oIHnnAYLvLVOvn4M7llk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/aGVhbHRoeXN1cHBs/aWVzLmNvLnVrL3Bp/Y3MvODAweDgwMC90/dW5pc2lhbi1vbGl2/ZS1vaWwtQ0xSTFcu/d2VicD90c2lkPTE2/ODI0MTQxOTA",
+    "seller": "LocalFarmTN",
+    "stock": 20
+  },
+  {
+    "title": "Harissa Paste 500g",
+    "description": "Spicy traditional Tunisian condiment.",
+    "price": 8,
+    "image": "https://imgs.search.brave.com/xoQccSERRdJWbtNXhMJgj7UJQMtSrwz-l5ubEJvIeLU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFFdlRHVFhjV0wu/anBn",
+    "seller": "SpiceShopTN",
+    "stock": 15
+  },
+  {
+    "title": "Handcrafted Pottery Bowl",
+    "description": "Artisanal bowl from Nabeul artisans.",
+    "price": 25,
+    "image": "https://www.crutchfieldpottery.com/shop/soupcereal-bowl",
+    "seller": "ArtisanTN",
+    "stock": 10
+  },
+  {
+    "title": "Tunisian Dates - 500g",
+    "description": "Fresh dates from the south of Tunisia, naturally sweet.",
+    "price": 10.5,
+    "image": "https://images.unsplash.com/photo-1596383443025-4d4d0a5d0d3e?w=800",
+    "seller": "DatesSellerTN",
+    "stock": 50,
+    "sales": 200 
+  }
+]
