@@ -1,0 +1,152 @@
+/* frontend/src/index.css */
+
+/* Slick Carousel - must come first */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom variables */
+:root {
+  --tm-orange: #ff8a00;
+  --tm-deep-orange: #ff6a00;
+  --tm-teal: #00b894;
+  --tm-yellow: #ffd166;
+  --tm-black: #000000;
+  --tm-white: #ffffff;
+  --tm-light-bg: #f8fafc;
+  --tm-light-text: #1e293b;
+  --tm-dark-bg: #0f172a;
+  --tm-dark-text: #e2e8f0;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  @apply bg-[var(--tm-light-bg)] text-[var(--tm-light-text)] min-h-screen;
+}
+
+/* Navbar fixed compensation */
+body, #root {
+  padding-top: 80px; /* Adjust this value based on your navbar height */
+}
+
+@media (max-width: 768px) {
+  body, #root {
+    padding-top: 70px; /* Smaller on mobile */
+  }
+}
+
+/* Dark mode */
+.dark body {
+  @apply bg-[var(--tm-dark-bg)] text-[var(--tm-dark-text)];
+}
+
+/* Gradients */
+.brand-gradient {
+  background: linear-gradient(90deg, var(--tm-orange), var(--tm-deep-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accent-gradient {
+  background: linear-gradient(90deg, var(--tm-teal), var(--tm-yellow));
+}
+
+/* Buttons */
+.btn-primary {
+  @apply px-6 py-3 rounded-full font-bold text-white transition-all duration-300;
+  background: linear-gradient(90deg, var(--tm-teal), var(--tm-orange));
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 184, 148, 0.3);
+}
+
+/* Cards */
+.card {
+  @apply rounded-2xl p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm transition-all duration-300;
+}
+
+.card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Slick slider */
+.slick-slide img {
+  @apply object-contain mx-auto;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: var(--tm-teal) !important;
+  font-size: 30px !important;
+}
+
+/* Double range slider (used in SearchResults) */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  pointer-events: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background: var(--tm-teal);
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 0 0 6px rgba(0, 184, 148, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 8px rgba(0, 184, 148, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  background: var(--tm-teal);
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 0 0 6px rgba(0, 184, 148, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 8px rgba(0, 184, 148, 0.3);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+input[type="range"]::-moz-range-track {
+  background: transparent;
+}
+
+/* Other utilities */
+.text-tm-orange { color: var(--tm-orange); }
+.bg-tm-orange { background-color: var(--tm-orange); }
+.text-tm-teal { color: var(--tm-teal); }
+.bg-tm-teal { background-color: var(--tm-teal); }
