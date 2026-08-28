@@ -13,6 +13,12 @@ if (missing.length) {
   process.exit(1);
 }
 
+// Not fatal on its own — only Google login needs it. Warn instead of exiting
+// so the rest of the app still works if you haven't set this up yet.
+if (!process.env.GOOGLE_CLIENT_ID) {
+  console.warn('[Server] ⚠️ GOOGLE_CLIENT_ID not set — Google login will fail until it is.');
+}
+
 // ── Cloudinary configuration ──────────────────────────────────────────────────
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -37,7 +43,11 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // ── MongoDB ───────────────────────────────────────────────────────────────────
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB connected'))
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    console.log('📦 Database:', mongoose.connection.name);
+    console.log('🌐 Host:', mongoose.connection.host);
+  })
   .catch(err => {
     console.error('❌ MongoDB connection error:', err.message);
     process.exit(1);
@@ -48,12 +58,14 @@ mongoose.connection.on('reconnected',  () => console.log('[MongoDB] Reconnected'
 
 // ── Routes ────────────────────────────────────────────────────────────────────
 app.use('/api/auth',     require('./routes/auth'));
+app.use('/api/auth',     require('./routes/googleAuth')); // ← NEW: adds POST /api/auth/google
 app.use('/api/products', require('./routes/products'));
 app.use('/api/cart',     require('./routes/cart'));
 app.use('/api/wishlist', require('./routes/wishlist'));
 app.use('/api/orders',   require('./routes/orders'));
 app.use('/api/seller',   require('./routes/seller'));
 app.use('/api/sellers',  require('./routes/sellerProfile'));
+app.use('/api/contact',  require('./routes/contact'));     // ← NEW: real contact form submission
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get('/api/health', (_, res) =>

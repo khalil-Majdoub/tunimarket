@@ -36,9 +36,15 @@ const User = require('../models/User'); // adjust path/name if different
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 router.post('/google', async (req, res) => {
-  const { token } = req.body;
+  // Accept a few common field names in case the frontend sends the
+  // credential under a different key than `token` (e.g. `credential`,
+  // `idToken`, `id_token`).
+  const token = req.body.token || req.body.credential || req.body.idToken || req.body.id_token;
 
   if (!token) {
+    // DIAGNOSTIC: log exactly what arrived so we can see why token is missing.
+    // Remove this console.log once the Google login flow is confirmed working.
+    console.warn('[AUTH] /google called with no usable token. req.body was:', req.body);
     return res.status(400).json({ message: 'Token Google requis' });
   }
   if (!process.env.GOOGLE_CLIENT_ID) {
